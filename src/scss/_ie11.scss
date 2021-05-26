@@ -1,0 +1,23 @@
+body.ie11 {
+  .card-container__grid {
+    display: flex;
+    flex-wrap: wrap;
+
+    .card {
+      width: calc(50% - 1rem);
+      margin-bottom: 2rem;
+
+      &:nth-of-type(odd) {
+        margin-right: 1rem;
+      }
+
+      &:nth-of-type(even) {
+        margin-left: 1rem;
+      }
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

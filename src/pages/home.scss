@@ -1,13 +1,5 @@
-.card-container {
-  &__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-  }
-
-  &__list {
-    display: block;
-  }
+.intro-text {
+  margin-bottom: 2rem;
 }
 
 .btn-quiz-link {
@@ -17,6 +9,7 @@
 
   svg {
     width: 18px;
+    height: 18px;
     fill: white;
     margin-left: 0.5rem;
   }

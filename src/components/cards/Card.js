@@ -1,5 +1,6 @@
 import React from "react";
 import "./card.scss";
+import Lazyload from "react-lazyload";
 
 import BlurredUpImage from "../images/BlurredUpImage";
 import CardContent from "./CardContent";
@@ -42,9 +43,9 @@ const Card = ({ data }) => {
   return (
     <article className="card">
       <div className="card__number">{index + 1}</div>
-      <figure className="card__image">
+      <Lazyload className="card__image">
         <BlurredUpImage small={small} large={large} altText={altText} />
-      </figure>
+      </Lazyload>
       <CardContent details={details} index={index} />
     </article>
   );

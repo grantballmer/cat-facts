@@ -34,19 +34,22 @@
   }
 
   &__content {
-    color: $dark-blue;
-    font-weight: 700;
+    // color: $dark-blue;
+    color: $navy-blue;
+    // color: #28231d;
+    // font-weight: 700;
 
     .heading {
-      text-decoration: underline;
+      // text-decoration: underline;
       margin-bottom: 1rem;
     }
 
     .post-date {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       margin-bottom: 0.5rem;
-      font-weight: 700;
+      // font-weight: 200;
       // color: $light-gray;
+      font-style: italic;
       color: $dark-blue;
     }
   }

@@ -33,7 +33,7 @@ const CardConent = ({ details, index }) => {
   return (
     <div className="card__content">
       <h2 className="heading">Cat Fact #{index + 1}</h2>
-      <p className="post-date">{postDate}</p>
+      <p className="post-date">Posted: {postDate}</p>
       <p>{details.text}</p>
     </div>
   );

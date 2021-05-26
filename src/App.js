@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./scss/main.scss";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -7,6 +7,14 @@ import Home from "./pages/Home";
 import Quiz from "./pages/Quiz";
 
 function App() {
+  useEffect(() => {
+    const isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
+
+    if (isIE11) {
+      document.body.classList.add("ie11");
+    }
+  }, []);
+
   return (
     <Router>
       <Navbar />
