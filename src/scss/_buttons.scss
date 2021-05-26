@@ -1,0 +1,21 @@
+button.button,
+a.button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+  border-radius: 25px;
+  background-color: $dark-blue;
+  color: white;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: $navy-blue;
+  }
+
+  &.active {
+    background-color: $navy-blue;
+  }
+}
