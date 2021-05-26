@@ -8,34 +8,37 @@ import axios from "axios";
 import Card from "./Card";
 import Loader from "../loader/Loader";
 
-const CardContainer = ({ view }) => {
-  const [catFacts, setCatFacts] = useState(null);
-  const [error, setError] = useState(null);
+const CardContainer = ({ view, catFacts }) => {
+  // const [catFacts, setCatFacts] = useState(null);
+  // const [error, setError] = useState(null);
   // const [isDropped, setIsDropped] = useState(false);
   // const containers = ["A", "B", "C"];
   // const [parent, setParent] = useState(null);
   // const draggableMarkup = <Draggable id="draggable">Drag me</Draggable>;
 
-  useEffect(() => {
-    // const url = "https://cat-fact.herokuapp.com/facts";
-    const url =
-      "https://api.github.com/repos/grantballmer/cat-facts/contents/package-lock.json?ref=master";
+  // useEffect(() => {
+  //   // const url = "https://cat-fact.herokuapp.com/facts";
+  //   const url =
+  //     "https://api.github.com/repos/grantballmer/cat-facts/contents/cat-facts.json";
 
-    async function getData() {
-      try {
-        const results = await axios.get(url);
-        console.log(results);
+  //   async function getData() {
+  //     try {
+  //       const results = await axios.get(url);
+  //       const decodedString = atob(results.data.content);
+  //       const resultsArr = JSON.parse(decodedString);
 
-        // setCatFacts([...results.data]);
-      } catch {
-        setError(
-          "There was an issue returning the results. Try reloading the page."
-        );
-      }
-    }
+  //       setCatFacts([...resultsArr]);
 
-    getData();
-  }, []);
+  //       // setCatFacts([...results.data]);
+  //     } catch {
+  //       setError(
+  //         "There was an issue returning the results. Try reloading the page."
+  //       );
+  //     }
+  //   }
+
+  //   getData();
+  // }, []);
 
   // function handleDragEnd(event) {
   //   const { over } = event;
@@ -50,13 +53,11 @@ const CardContainer = ({ view }) => {
         view === "grid" ? "card-container__grid" : "card-container__list"
       }`}
     >
-      {/* If catFacts has been set, display cards, else show loader */}
+      {/* check if catFacts has been set, display cards, else show loader */}
       {catFacts ? (
         catFacts.map((element, index) => {
           return <Card data={{ details: element, index }} key={element._id} />;
         })
-      ) : error ? (
-        <p>{error}</p>
       ) : (
         <Loader />
       )}

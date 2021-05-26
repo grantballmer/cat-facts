@@ -1,5 +1,11 @@
+@import "../scss/variables";
+
 .intro-text {
   margin-bottom: 2rem;
+
+  h1 {
+    font-family: $secondary-font;
+  }
 }
 
 .btn-quiz-link {
