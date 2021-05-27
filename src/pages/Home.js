@@ -13,19 +13,19 @@ const Home = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // const url = "https://cat-fact.herokuapp.com/facts";
-    const url =
-      "https://api.github.com/repos/grantballmer/cat-facts/contents/cat-facts.json";
+    const url = "https://cat-fact.herokuapp.com/facts";
+    // const url =
+    //   "https://api.github.com/repos/grantballmer/cat-facts/contents/cat-facts.json";
 
     async function getData() {
       try {
         const results = await axios.get(url);
-        const decodedString = atob(results.data.content);
-        const resultsArr = JSON.parse(decodedString);
 
-        setCatFacts([...resultsArr]);
+        setCatFacts([...results.data]);
+        // const decodedString = atob(results.data.content);
+        // const resultsArr = JSON.parse(decodedString);
 
-        // setCatFacts([...results.data]);
+        // setCatFacts([...resultsArr]);
       } catch {
         setError(
           "There was an issue returning the results. Try reloading the page."

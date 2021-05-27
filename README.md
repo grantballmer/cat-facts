@@ -1,6 +1,6 @@
 # Cat Facts Application
 
-A live demo of the site is available here: [Cat Facs](https://grantballmer.github.io/cat-facts/#/).
+A live demo of the site is available here: [Cat Facts](https://grantballmer.github.io/cat-facts/#/).
 
 ## How to clone and run repository
 
@@ -8,16 +8,16 @@ Navigate to your projects directory, then you can run:
 
 ### `git clone https://github.com/grantballmer/cat-facts.git`
 
-The repository will be downloading into a 'cats-facts' directory.
+The repository will download into a 'cats-facts' directory.
 Navigate to that directory by running:
 
 ### `cd cat-facts`
 
-Next you will need to install all the packages using npm
+Next you will need to install all the packages using npm. Run:
 
 ### `npm install`
 
-Once the packages have installed successfully you can get a local development site by running the following command:
+Once the packages have installed successfully you can view a local development site by running the following command:
 
 ### `npm run start`
 
