@@ -28,6 +28,20 @@ a.button {
   }
 }
 
+.btn-quiz-link {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 5;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    fill: white;
+    margin-left: 0.5rem;
+  }
+}
+
 .btn-answer {
   display: flex;
   width: 100%;

@@ -44,11 +44,6 @@ const Home = () => {
         <>
           <div className="intro-text">
             <h1>Cat Facts</h1>
-            <p>Below is a list of 5 facts about cats</p>
-            <p>
-              Feel free to drag and reorder the items, as well as switch between
-              the grid and list view using the buttons below
-            </p>
           </div>
 
           <CardContainer

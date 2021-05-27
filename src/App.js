@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 import "./scss/main.scss";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Switch,
+  Route,
+  HashRouter,
+} from "react-router-dom";
 
 import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/Home";
@@ -16,7 +21,7 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <HashRouter basename="/">
       <Navbar />
       <Switch>
         <Route path="/quiz">
@@ -26,7 +31,7 @@ function App() {
           <Home />
         </Route>
       </Switch>
-    </Router>
+    </HashRouter>
   );
 }
 

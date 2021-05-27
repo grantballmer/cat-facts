@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useRef } from "react";
-import "./quiz.scss";
+import React, { useState, useRef } from "react";
 
-import Reward from "react-rewards";
+import Score from "../components/quiz/Score";
+import Questions from "../components/quiz/Questions";
 
 const Quiz = () => {
   const questions = [
@@ -105,55 +105,14 @@ const Quiz = () => {
   return (
     <section className="quiz-container max-width">
       {showScore ? (
-        <div className="score-section">
-          {score > 3 ? (
-            <>
-              <h1>Congratulations!!</h1>
-              <Reward
-                ref={rewardRef}
-                type="confetti"
-                config={{
-                  elementCount: 100,
-                  spread: 120,
-                  elementSize: 10,
-                }}
-              >
-                You answered {score * 20}% of the questions correctly.
-              </Reward>
-            </>
-          ) : (
-            <>
-              <p>
-                Sorry, you only answered {score * 20}% of the questions
-                correctly.
-              </p>
-              <button className="button btn-primary" onClick={resetPage}>
-                Try again
-              </button>
-            </>
-          )}
-        </div>
+        <Score score={score} resetPage={resetPage} rewardRef={rewardRef} />
       ) : (
-        <>
-          <div className="questions">
-            <h2>Question {currentQuestion + 1}</h2>
-            <p>{questions[currentQuestion].questionText}</p>
-          </div>
-          {questions[currentQuestion].answerOptions.map(
-            (answerOption, index) => (
-              <button
-                onClick={(e) => handleClick(e, answerOption.isCorrect)}
-                className="btn-answer"
-                key={answerOption.answerText + index}
-                ref={answerOption.isCorrect ? correctAnswer : null}
-                ariaLabel={`answer number ${index}, ${answerOption.answerText}`}
-              >
-                <span className="btn-answer__number">{index + 1}) </span>
-                {answerOption.answerText}
-              </button>
-            )
-          )}
-        </>
+        <Questions
+          questions={questions}
+          currentQuestion={currentQuestion}
+          handleClick={handleClick}
+          correctAnswer={correctAnswer}
+        />
       )}
     </section>
   );

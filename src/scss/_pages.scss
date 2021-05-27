@@ -1,4 +1,8 @@
 .max-width {
   @include max-width;
-  padding: 2rem 0;
+  padding: 2rem;
+
+  @include md {
+    padding: 2rem 0;
+  }
 }

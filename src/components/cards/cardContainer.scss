@@ -1,8 +1,14 @@
+@import "../../scss/mixins";
+
 .card-container {
   &__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    display: block;
+
+    @include md {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
   }
 
   &__list {

@@ -5,18 +5,17 @@
 
   h1 {
     font-family: $secondary-font;
+    margin-bottom: 1rem;
   }
-}
 
-.btn-quiz-link {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  p {
+    margin-bottom: 1rem;
+  }
 
-  svg {
-    width: 18px;
-    height: 18px;
-    fill: white;
-    margin-left: 0.5rem;
+  ul {
+    li {
+      list-style-position: inside;
+      margin-bottom: 0.25rem;
+    }
   }
 }

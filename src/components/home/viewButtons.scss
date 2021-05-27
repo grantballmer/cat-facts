@@ -1,7 +1,15 @@
+@import "../../scss/mixins";
+
 .view-buttons {
   position: fixed;
   bottom: 2rem;
   left: 2rem;
+  z-index: 5;
+  display: none;
+
+  @include md {
+    display: block;
+  }
 
   button {
     &:first-of-type {
