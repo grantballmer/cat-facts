@@ -51,7 +51,11 @@ const Home = () => {
             </p>
           </div>
 
-          <CardContainer view={view} catFacts={catFacts} />
+          <CardContainer
+            view={view}
+            catFacts={catFacts}
+            setCatFacts={setCatFacts}
+          />
 
           <ViewButtons view={view} setView={setView} />
         </>

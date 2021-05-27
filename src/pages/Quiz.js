@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./quiz.scss";
+
+import Reward from "react-rewards";
 
 const Quiz = () => {
   const questions = [
@@ -39,7 +41,7 @@ const Quiz = () => {
         { answerText: "Red Bull", isCorrect: false },
         { answerText: "drinking water", isCorrect: true },
         { answerText: "beer", isCorrect: false },
-        { answerText: "Gatorade", isCorrect: true },
+        { answerText: "Gatorade", isCorrect: false },
       ],
     },
     {
@@ -49,7 +51,7 @@ const Quiz = () => {
         { answerText: "stroke and heart attack", isCorrect: true },
         { answerText: "dying alone", isCorrect: false },
         { answerText: "being attacked by a bear", isCorrect: false },
-        { answerText: "gaining weight", isCorrect: true },
+        { answerText: "gaining weight", isCorrect: false },
       ],
     },
   ];
@@ -57,42 +59,96 @@ const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
+  const [answerChosen, setAnswerChosen] = useState(false);
+  const correctAnswer = useRef(null);
+  const rewardRef = useRef();
 
-  const handleClick = (isCorrect) => {
-    if (isCorrect) {
-      setScore(score + 1);
-    }
+  const handleClick = (e, isCorrect) => {
+    // Check if an answer has already been clicked, to prevent multiple selections
+    if (!answerChosen) {
+      if (isCorrect) {
+        e.target.classList.add("correct");
+        setScore(score + 1);
+      } else {
+        correctAnswer.current.classList.add("correct");
+        e.target.classList.add("incorrect");
+      }
 
-    console.log(questions[currentQuestion]);
+      // Set answerChosen to true to prevent multiple selections
+      setAnswerChosen(true);
 
-    const nextQuestion = currentQuestion + 1;
+      // Pause between answering and next question being displayed
+      setTimeout(function () {
+        const nextQuestion = currentQuestion + 1;
 
-    if (nextQuestion < questions.length) {
-      setCurrentQuestion(nextQuestion);
-    } else {
-      setShowScore(true);
+        if (nextQuestion < questions.length) {
+          setCurrentQuestion(nextQuestion);
+          setAnswerChosen(false);
+        } else {
+          setShowScore(true);
+          console.log(score);
+          if (score > 3) {
+            rewardRef.current.rewardMe();
+          }
+        }
+      }, 1200);
     }
   };
+
+  const resetPage = () => {
+    setCurrentQuestion(0);
+    setShowScore(false);
+    setScore(0);
+    setAnswerChosen(false);
+  };
+
   return (
     <section className="quiz-container max-width">
       {showScore ? (
         <div className="score-section">
-          You scored {score} out of {questions.length}
+          {score > 3 ? (
+            <>
+              <h1>Congratulations!!</h1>
+              <Reward
+                ref={rewardRef}
+                type="confetti"
+                config={{
+                  elementCount: 100,
+                  spread: 120,
+                  elementSize: 10,
+                }}
+              >
+                You answered {score * 20}% of the questions correctly.
+              </Reward>
+            </>
+          ) : (
+            <>
+              <p>
+                Sorry, you only answered {score * 20}% of the questions
+                correctly.
+              </p>
+              <button className="button btn-primary" onClick={resetPage}>
+                Try again
+              </button>
+            </>
+          )}
         </div>
       ) : (
         <>
           <div className="questions">
-            <p>Question {currentQuestion + 1}</p>
-            {questions[currentQuestion].questionText}
+            <h2>Question {currentQuestion + 1}</h2>
+            <p>{questions[currentQuestion].questionText}</p>
           </div>
           {questions[currentQuestion].answerOptions.map(
             (answerOption, index) => (
               <button
-                onClick={() => handleClick(answerOption.isCorrect)}
-                className="answer-button"
+                onClick={(e) => handleClick(e, answerOption.isCorrect)}
+                className="btn-answer"
                 key={answerOption.answerText + index}
+                ref={answerOption.isCorrect ? correctAnswer : null}
+                ariaLabel={`answer number ${index}, ${answerOption.answerText}`}
               >
-                <span className="answer-button__number">{index + 1}) </span>
+                <span className="btn-answer__number">{index + 1}) </span>
                 {answerOption.answerText}
               </button>
             )

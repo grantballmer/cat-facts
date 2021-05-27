@@ -10,6 +10,7 @@ const ViewButtons = ({ view, setView }) => {
       <button
         className={`button btn-primary ${view === "grid" ? "active" : ""}`}
         onClick={() => setView("grid")}
+        aria-label="Enable grid view"
       >
         Grid
         <Grid />
@@ -17,6 +18,7 @@ const ViewButtons = ({ view, setView }) => {
       <button
         className={`button btn-primary ${view === "list" ? "active" : ""}`}
         onClick={() => setView("list")}
+        aria-label="Enable list view"
       >
         List
         <List />
