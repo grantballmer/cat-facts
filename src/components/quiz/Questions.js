@@ -7,18 +7,9 @@ const Questions = ({
   handleClick,
   correctAnswer,
   questionRef,
-  announcement,
 }) => {
   return (
     <>
-      <div
-        aria-live="assertive"
-        aria-atomic="true"
-        aria-relevant="additions"
-        className="sr-only"
-      >
-        {announcement}
-      </div>
       <div className="questions">
         <h2 tabIndex="0" ref={questionRef}>
           Question {currentQuestion + 1}

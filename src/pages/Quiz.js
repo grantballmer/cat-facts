@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import "./quiz.scss";
 
 import Score from "../components/quiz/Score";
 import Questions from "../components/quiz/Questions";
@@ -61,7 +60,7 @@ const Quiz = () => {
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
   const [answerChosen, setAnswerChosen] = useState(false);
-  const [announcement, setAnnouncement] = useState("");
+
   const correctAnswer = useRef(null);
   const questionRef = useRef();
   const rewardRef = useRef();
@@ -72,11 +71,9 @@ const Quiz = () => {
       if (isCorrect) {
         e.target.classList.add("correct");
         setScore(score + 1);
-        setAnnouncement("correct");
       } else {
         correctAnswer.current.classList.add("correct");
         e.target.classList.add("incorrect");
-        setAnnouncement("incorrect");
       }
 
       // Set answerChosen to true to prevent multiple selections
@@ -88,7 +85,6 @@ const Quiz = () => {
 
         if (nextQuestion < questions.length) {
           setCurrentQuestion(nextQuestion);
-          console.log(questionRef.current);
           setAnswerChosen(false);
           questionRef.current.focus();
         } else {
@@ -119,7 +115,6 @@ const Quiz = () => {
           handleClick={handleClick}
           correctAnswer={correctAnswer}
           questionRef={questionRef}
-          announcement={announcement}
         />
       )}
     </section>
