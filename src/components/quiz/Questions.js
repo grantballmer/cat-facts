@@ -6,12 +6,24 @@ const Questions = ({
   currentQuestion,
   handleClick,
   correctAnswer,
+  questionRef,
+  announcement,
 }) => {
   return (
     <>
+      <div
+        aria-live="assertive"
+        aria-atomic="true"
+        aria-relevant="additions"
+        className="sr-only"
+      >
+        {announcement}
+      </div>
       <div className="questions">
-        <h2>Question {currentQuestion + 1}</h2>
-        <p>{questions[currentQuestion].questionText}</p>
+        <h2 tabIndex="0" ref={questionRef}>
+          Question {currentQuestion + 1}
+        </h2>
+        <p tabIndex="0">{questions[currentQuestion].questionText}</p>
       </div>
       {questions[currentQuestion].answerOptions.map((answerOption, index) => (
         <button
@@ -19,7 +31,7 @@ const Questions = ({
           className="btn-answer"
           key={answerOption.answerText + index}
           ref={answerOption.isCorrect ? correctAnswer : null}
-          aria-label={`answer number ${index}, ${answerOption.answerText}`}
+          aria-label={`answer number ${index + 1}, ${answerOption.answerText}`}
         >
           <span className="btn-answer__number">{index + 1}) </span>
           {answerOption.answerText}

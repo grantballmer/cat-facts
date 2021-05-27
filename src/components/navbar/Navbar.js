@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav className="main-nav">
-      <Link to="/">Cat Facts</Link>
+      <Link to="/" aria-label="Cat Facts home page">
+        Cat Facts
+      </Link>
     </nav>
   );
 };
