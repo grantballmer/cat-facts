@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import "./quiz.scss";
 
 import Score from "../components/quiz/Score";
 import Questions from "../components/quiz/Questions";
@@ -86,7 +87,6 @@ const Quiz = () => {
           setAnswerChosen(false);
         } else {
           setShowScore(true);
-          console.log(score);
           if (score > 3) {
             rewardRef.current.rewardMe();
           }

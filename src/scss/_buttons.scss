@@ -52,8 +52,13 @@ a.button {
   border: 0;
   margin-bottom: 2rem;
   cursor: pointer;
-  font-size: 1.6rem;
+  font-size: 1rem;
   border: 2px solid transparent;
+  background-color: #f0f0f0;
+
+  @include md {
+    font-size: 1.6rem;
+  }
 
   &:focus,
   &:active {

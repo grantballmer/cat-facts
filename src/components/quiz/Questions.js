@@ -19,7 +19,7 @@ const Questions = ({
           className="btn-answer"
           key={answerOption.answerText + index}
           ref={answerOption.isCorrect ? correctAnswer : null}
-          ariaLabel={`answer number ${index}, ${answerOption.answerText}`}
+          aria-label={`answer number ${index}, ${answerOption.answerText}`}
         >
           <span className="btn-answer__number">{index + 1}) </span>
           {answerOption.answerText}

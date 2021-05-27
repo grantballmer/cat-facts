@@ -12,6 +12,7 @@ const Score = ({ score, resetPage, rewardRef }) => {
             ref={rewardRef}
             type="confetti"
             config={{
+              lifetime: 100,
               elementCount: 100,
               spread: 120,
               elementSize: 10,
